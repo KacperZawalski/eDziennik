@@ -1,6 +1,11 @@
 package com.example.edziennik.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Test {
+    @PrimaryKey
     public int Id;
     public int Result;
     public int MaxResult;
