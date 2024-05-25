@@ -22,5 +22,5 @@ public interface TestDao {
     void updateAll(Test... tests);
 
     @Delete
-    void deleteAll(Test... test);
+    void deleteAll(Test... tests);
 }
