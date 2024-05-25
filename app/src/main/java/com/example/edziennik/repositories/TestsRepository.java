@@ -37,6 +37,10 @@ public class TestsRepository {
         return true;
     }
 
+    public List<Test> GetAllTests() {
+        return _testDao.getAll();
+    }
+
     public Test GetTest(int id) {
         Optional<Test> test = _testDao.getAll().stream().filter(t -> t.Id == id).findFirst();
         return test.get();

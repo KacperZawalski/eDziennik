@@ -7,11 +7,18 @@ import com.example.edziennik.database.AppDatabaseFactory;
 import com.example.edziennik.models.Test;
 import com.example.edziennik.repositories.TestsRepository;
 
+import java.util.List;
+
 public class TestsLogic {
     private TestsRepository _repository;
 
     public TestsLogic(Context context) {
         _repository = new TestsRepository(context);
+    }
+
+    public List<Test> GetAllTests()
+    {
+        return _repository.GetAllTests();
     }
 
     public Test GetTest(int id)
