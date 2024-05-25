@@ -12,4 +12,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="gradesButtonText">Oceny</string>
     <string name="gradesReturnButtonText">Powrót</string>
+    <string name="testsButtonText">Testy</string>
+    <string name="testsReturnButtonText">Powrót</string>
 </resources>

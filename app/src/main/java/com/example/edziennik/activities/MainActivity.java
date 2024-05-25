@@ -11,6 +11,7 @@ import com.example.edziennik.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button gradesButton;
+    private Button testsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +21,19 @@ public class MainActivity extends AppCompatActivity {
     }
     private void AssignValuesToButtons() {
         gradesButton = (Button)findViewById(R.id.gradesButton);
+        testsButton = (Button)findViewById(R.id.testsButton);
     }
     private void AddButtonsEventListeners() {
         gradesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, GradesActivity.class));
+            }
+        });
+        testsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TestsActivity.class));
             }
         });
     }
