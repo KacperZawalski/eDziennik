@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.GradesActivity">
 
+    <ListView
+        android:id="@+id/gradesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <Button
         android:id="@+id/gradesReturnButton"
         android:layout_width="wrap_content"
