@@ -11,9 +11,11 @@ public class Test {
     public int MaxResult;
     public boolean IsPassed;
     public String Subject;
+
     public Test()
     {
     }
+
     public Test(int id, int result, int maxResult, boolean isPassed, String subject)
     {
         Id = id;
