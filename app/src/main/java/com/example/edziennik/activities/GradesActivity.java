@@ -1,6 +1,9 @@
 package com.example.edziennik.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class GradesActivity extends AppCompatActivity {
     private GradesLogic _gradesLogic;
+    private ArrayList<Grade> listGrades = new ArrayList<Grade>();
     private ArrayList<String> listItems = new ArrayList<String>();
     private ArrayAdapter<String> adapter;
 
@@ -37,9 +41,24 @@ public class GradesActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.gradesList);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Grade grade = listGrades.get(position);
+
+                Intent intent = new Intent(getApplicationContext(), GradeDetailsActivity.class);
+                intent.putExtra("grade", grade);
+                //based on item add info to intent
+                startActivity(intent);
+            }
+        });
+
+        //listView.setOnClickListener(l -> Toast.makeText(this, "test: " + l.getId(), (int)1));
+
         List<Grade> grades = _gradesLogic.GetAllGrades();
 
         for (Grade grade : grades) {
+            listGrades.add(grade);
             listItems.add("[" + grade.Value + "] " + grade.Subject);
         }
     }

@@ -3,8 +3,10 @@ package com.example.edziennik.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Grade {
+public class Grade implements Serializable {
     @PrimaryKey
     public int Id;
     public int Value;
