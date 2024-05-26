@@ -1,6 +1,9 @@
 package com.example.edziennik.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,6 +16,7 @@ import com.example.edziennik.daos.TestDao;
 import com.example.edziennik.database.AppDatabase;
 import com.example.edziennik.database.AppDatabaseFactory;
 import com.example.edziennik.logic.TestsLogic;
+import com.example.edziennik.models.Grade;
 import com.example.edziennik.models.Test;
 
 import java.util.ArrayList;
@@ -20,6 +24,7 @@ import java.util.List;
 
 public class TestsActivity extends AppCompatActivity {
     private TestsLogic _testsLogic;
+    private ArrayList<Test> listTests = new ArrayList<Test>();
     private ArrayList<String> listItems = new ArrayList<String>();
     private ArrayAdapter<String> adapter;
 
@@ -39,10 +44,24 @@ public class TestsActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.testsList);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Test test = listTests.get(position);
+
+                Intent intent = new Intent(getApplicationContext(), TestDetailsActivity.class);
+                intent.putExtra("test", test);
+                //based on item add info to intent
+                startActivity(intent);
+            }
+        });
+
         _testsLogic = new TestsLogic(getApplicationContext());
         List<Test> tests = _testsLogic.GetAllTests();
 
         for (Test test : tests) {
+            listTests.add(test);
+
             String passedInfo = test.IsPassed ? "[PASS] " : "[FAIL] ";
             listItems.add(passedInfo + test.Subject + " (" + test.Result + "/" + test.MaxResult + ")");
         }
